@@ -1,0 +1,102 @@
+
+
+.btn {
+
+	&:link,
+	&:visited {
+	position: relative;
+	/* links are default inline-element */
+	display: inline-block;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 1.5rem 4rem;
+	border-radius: 10rem;
+	font-size: $default-font-size;
+
+	/* all properties animated */
+	transition: all .2s;
+	}
+
+	&:hover {
+		transform: translateY(-.3rem);
+		/* values: */
+		/* offset x, offset y, blur, color */
+		box-shadow: 0 1rem 2rem rgba($color-black,.2);
+
+		&::after {
+			transform: scaleX(1.4) scaleY(1.6);
+			/* trick to make element fade out */
+			/* is to use opacity -> 0 */
+			opacity: 0;
+		}
+	}
+
+	&:active {
+		transform: translateY(-.1rem);
+		box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+	}
+
+	&--white {
+		background-color: $color-white;
+		color: $color-grey-dark;
+
+		&::after {
+			background-color: $color-white;
+		}
+	}
+
+	&::after {
+		content: "";
+		display: inline-block;
+
+		/* after-sudo element treated as child of parent */
+		height: 100%;
+		width:100%;
+		border-radius: 10rem;
+
+		/* Hides it under button */
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+
+		/* animation */
+		transition: all .4s;
+	}
+
+	&--animated {
+		/* values: */
+		/* name, duration, timing-func, delay */
+		animation: moveInBottom .5s ease-out .75s;
+
+		/* automatically applies styles of 0% in keyframes before animation begins */
+		animation-fill-mode: backwards;
+	}
+
+}
+
+.btn-text {
+	&:link,
+	&:visited {
+		font-size: $default-font-size;
+		color: $color-primary;
+		display: inline-block;
+		text-decoration: none;
+		border-bottom: 1px solid $color-primary;
+		padding: 3px;
+
+		transition: all .2s;
+	}
+
+	&:hover {
+		background-color: $color-primary;
+		color: $color-white;
+		box-shadow: 0 1rem 2rem rbga($color-black, .15);
+		transform: translateY(-2px);
+	}
+
+	&:active {
+		box-shadow: 0 .5rem 1rem rbga($color-black, .15);
+		transform: translateY(0);
+	}
+}
