@@ -1,7 +1,6 @@
-
-
 .btn {
 
+	&, //calls .btn class
 	&:link,
 	&:visited {
 	position: relative;
@@ -15,6 +14,10 @@
 
 	/* all properties animated */
 	transition: all .2s;
+
+	//Change for the <button> element
+	border: none;
+	cursor: pointer;
 	}
 
 	&:hover {
@@ -31,7 +34,9 @@
 		}
 	}
 
-	&:active {
+	&:active,
+	&:focus {
+		outline: none;
 		transform: translateY(-.1rem);
 		box-shadow: 0 .5rem 1rem rgba($color-black,.2);
 	}
@@ -39,6 +44,15 @@
 	&--white {
 		background-color: $color-white;
 		color: $color-grey-dark;
+
+		&::after {
+			background-color: $color-white;
+		}
+	}
+
+	&--green {
+		background-color: $color-primary;
+		color: $color-white;
 
 		&::after {
 			background-color: $color-white;
